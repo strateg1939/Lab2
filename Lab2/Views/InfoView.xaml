@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Lab2.Views.InfoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Background="White"
+        Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0" Text="Birth date" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock Background="White" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding BirthDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock  Grid.Row="0" Text="Is birthday" HorizontalAlignment="Stretch" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock Background="White" Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding IsBirthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock  Grid.Row="2" Text="First name" HorizontalAlignment="Stretch" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="2" Grid.Column="1" Text="Last name" HorizontalAlignment="Stretch" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="3" Background="White" HorizontalAlignment="Stretch" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding FirstName, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="3" Background="White" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding LastName, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="4" Text="Email" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="4" Text="Is adult" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="5" Background="White" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding Email, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="5" Background="White" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding IsAdult, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="6" Text="Chinese sign" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="6" Text="Sun sign" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="7" Background="White" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding ChineseSign, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="7" Background="White" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding SunSign, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+    </Grid>
+</UserControl>

@@ -5,6 +5,7 @@ using System.Windows;
 using System.ComponentModel;
 using Lab2.Navigation;
 using System.Threading.Tasks;
+using Lab2.AppException;
 
 namespace Lab2.ViewModels
 {
@@ -39,15 +40,19 @@ namespace Lab2.ViewModels
         private async Task Proceed()
         {
             newPerson = new Person(FirstName, LastName, Email, BirthDate);
-            await newPerson.CalculateData();
+            try
+            {
+                await newPerson.CalculateData();
+            } 
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return;
+            } 
+
             if (newPerson.IsBirthday)
             {
                 MessageBox.Show("Happy birthday to you!");
-            }
-            if (newPerson.Age < 0 || newPerson.Age > 135)
-            {
-                MessageBox.Show("Your date of birth is impossible");
-                return;
             }
 
             gotoInfo.Invoke(newPerson);

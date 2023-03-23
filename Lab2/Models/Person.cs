@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab2.AppException;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace Lab2.Models
         private string sunSign;
         private bool isAdult;
         private bool isBirthday;
+        private const int MAX_AGE = 135;
+        private const int MIN_AGE = 0;
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -76,7 +79,27 @@ namespace Lab2.Models
             sunSign = await t2;
             chineseSign = await t3;
             isBirthday = await t4;
-            isAdult = await t5;       
+            isAdult = await t5;
+
+            if (Age < MIN_AGE)
+            {
+                throw new AgeTooSmallException($"Your age is below {MIN_AGE}.It is not possible");
+            }
+            if (Age > MAX_AGE)
+            {
+                throw new AgeTooBigException($"Your age is above {MAX_AGE}.It is not possible");
+            }
+            if (!ValidateEmail(Email))
+            {
+                throw new IncorrectEmailException("Your email is incorrect");
+            }
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            Regex regex = new Regex(@"(\w+)@(\w+)\.(\w+)");
+
+            return regex.IsMatch(email);
         }
         private int GetAge(DateTime birthday)
         {

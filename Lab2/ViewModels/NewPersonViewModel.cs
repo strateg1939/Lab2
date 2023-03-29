@@ -17,7 +17,8 @@ namespace Lab2.ViewModels
         private Action<Person> gotoInfo;
         public event PropertyChangedEventHandler? PropertyChanged;
         public NavigationTypes ViewType => NavigationTypes.NewPerson;
-        
+        private PersonRepository personRepository = new PersonRepository();
+
 
         public DateTime BirthDate { get; set; }
         public string FirstName { get; set; }
@@ -48,13 +49,21 @@ namespace Lab2.ViewModels
             {
                 MessageBox.Show(e.Message);
                 return;
-            } 
+            }
 
+            var existingEmail = await personRepository.GetPersonAsync(Email);
+            if (existingEmail != null)
+            {
+                MessageBox.Show($"Error: This email exists");
+                return;
+            }
             if (newPerson.IsBirthday)
             {
                 MessageBox.Show("Happy birthday to you!");
             }
 
+
+            await personRepository.AddToRepositoryOrUpdateAsync(newPerson);
             gotoInfo.Invoke(newPerson);
         }
         private bool CanExecute(object o)

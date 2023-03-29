@@ -15,7 +15,7 @@ namespace Lab2.ViewModels
 
         public NavigationViewModel()
         {
-            Navigate(NavigationTypes.NewPerson);
+            Navigate(NavigationTypes.PersonList);
         }
 
         
@@ -75,7 +75,9 @@ namespace Lab2.ViewModels
             switch (type)
             {
                 case NavigationTypes.NewPerson:
-                    return new NewPersonViewModel(person => NavigateToInfo(new InfoViewModel(person)));
+                    return new NewPersonViewModel((p) => Navigate(NavigationTypes.PersonList));
+                case NavigationTypes.PersonList:
+                    return new PeopleListViewModel(() => Navigate(NavigationTypes.NewPerson), person => ViewModel = person, () => Navigate(NavigationTypes.PersonList));
                 default:
                     return null;
             }
@@ -85,6 +87,8 @@ namespace Lab2.ViewModels
     public enum NavigationTypes
     {
         NewPerson,
+        EditPerson,
+        PersonList,
         Info,
     }
 

@@ -1,5 +1,6 @@
 ﻿using Lab2.AppException;
 using System;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -66,6 +67,29 @@ namespace Lab2.Models
             Birthday = birthday;
         }
 
+        public Person()
+        {
+
+        }
+        [JsonConstructor]
+        public Person(string firstName, string lastName, string email, DateTime birthday, bool isAdult, string sunSign, string chineseSign, bool isBirthday, int age)
+        {
+
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Birthday = birthday;
+            Age = age;
+
+            //////////////////////////////////
+
+            this.isAdult = isAdult;
+            this.sunSign = sunSign;
+            this.chineseSign = chineseSign;
+            this.isBirthday = isBirthday;
+
+        }
+
         public async Task CalculateData()
         {
             Task<int> t1 = Task.Run(() => GetAge(Birthday));
@@ -93,6 +117,15 @@ namespace Lab2.Models
             {
                 throw new IncorrectEmailException("Your email is incorrect");
             }
+        }
+
+        public void CalculateDataSync()
+        {
+            Age = GetAge(Birthday);
+            chineseSign = GetChineezeZodiac(Birthday);
+            sunSign = GetWesternZodiac(Birthday);
+            isBirthday = CalculateIsBirthday(Birthday);
+            isAdult = CalculateIsAdult(Age);
         }
 
         private bool ValidateEmail(string email)

@@ -14,6 +14,12 @@
         <DataTemplate DataType="{x:Type vm:NewPersonViewModel}">
             <local:NewPerson></local:NewPerson>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EditPersonViewModel}">
+            <local:EditPersonView></local:EditPersonView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PeopleListViewModel}">
+            <local:PeopleListView></local:PeopleListView>
+        </DataTemplate>
     </UserControl.Resources>
-    
+
 </UserControl>
